@@ -1,0 +1,36 @@
+<Window x:Class="ChromeHub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ChromeHub"
+        Title="The Chrome Hub" Height="800" Width="1200"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource TextBrush}"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Navigation Header -->
+        <Border Grid.Row="0" Background="{DynamicResource HeaderBrush}" CornerRadius="0,0,12,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="The Chrome Hub" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextBrush}"/>
+                
+                <Button Grid.Column="1" Content="Widget Space" Click="OnWidgetSpaceClick" Style="{DynamicResource NavigationButtonStyle}" Margin="10"/>
+                <Button Grid.Column="2" Content="Browse" Click="OnBrowseClick" Style="{DynamicResource NavigationButtonStyle}" Margin="10"/>
+                <Button Grid.Column="3" Content="⚙️" Click="OnSettingsClick" Style="{DynamicResource NavigationButtonStyle}" Margin="10"/>
+            </Grid>
+        </Border>
+        
+        <!-- Content Area -->
+        <ContentControl Grid.Row="1" x:Name="ContentArea" Content="{Binding CurrentPage}"/>
+    </Grid>
+</Window>
